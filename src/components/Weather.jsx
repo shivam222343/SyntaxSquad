@@ -1,54 +1,63 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 
-const Weather = () => {
-  const [itinerary, setItinerary] = useState([]);
+function Weather() {
+  const [search, setSearch] = useState("");
   const [weather, setWeather] = useState(null);
+  const [error, setError] = useState(null);
 
-  const addDestination = () => {
-    setItinerary([...itinerary, { destination: '', activities: [] }]);
+  const api = {
+    key: '25bdaaa15b692366ea50554b6453574f',
+    base: 'https://api.openweathermap.org/data/2.5/'
   };
 
-  const handleDestinationChange = (index, event) => {
-    const newItinerary = [...itinerary];
-    newItinerary[index].destination = event.target.value;
-    setItinerary(newItinerary);
-    fetchWeather(event.target.value);
-  };
-
-  const fetchWeather = (city) => {
-    const apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
-      .then(response => setWeather(response.data))
-      .catch(error => console.log(error));
+  const searchpass = () => {
+    fetch(`${api.base}weather?q=${search}&units=metric&APPID=${api.key}`)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('City not found');
+        }
+        return res.json();
+      })
+      .then(result => {
+        setWeather(result);
+        setError(null);
+      })
+      .catch(err => {
+        setError(err.message);
+        setWeather(null);
+      });
   };
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Plan Your Itinerary</h2>
-      {itinerary.map((item, index) => (
-        <div key={index} className="mb-4">
-          <input
-            type="text"
-            value={item.destination}
-            onChange={(e) => handleDestinationChange(index, e)}
-            placeholder="Enter Destination"
-            className="border p-2 rounded w-full"
-          />
-        </div>
-      ))}
+    <div className='flex flex-col mt-20 items-center min-h-screen '>
+      <div className='flex flex-col mt-20 items-center min-h-screen'>
+      <h1 className='text-3xl font-bold text-black mb-8'> Check Weather</h1>
+      <input
+        type="text"
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder='Enter city name...'
+        className='p-2 rounded-lg text-black mb-4 w-72 outline-none border-2'
+
+      />
+      <button
+        onClick={searchpass}
+        className='px-4 py-2 w-40 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-500 transition duration-300'
+      >
+        Search
+      </button>
+
+      {error && <p className='mt-4 text-red-400'>{error}</p>}
+
       {weather && (
-        <div className="mt-4">
-          <h3 className="text-xl font-bold">Weather in {weather.name}</h3>
-          <p>{weather.weather[0].description}</p>
-          <p>Temperature: {(weather.main.temp - 273.15).toFixed(2)}°C</p>
+        <div className='mt-8 p-4 bg-white bg-opacity-20 rounded-lg shadow-lg'>
+          <h2 className='text-2xl font-semibold'>{weather.name}, {weather.sys.country}</h2>
+          <p className='text-xl'>{Math.round(weather.main.temp)}°C</p>
+          <p className='text-lg'>{weather.weather[0].main}</p>
         </div>
       )}
-      <button onClick={addDestination} className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700">
-        Add Destination
-      </button>
+      </div>
     </div>
   );
-};
+}
 
 export default Weather;

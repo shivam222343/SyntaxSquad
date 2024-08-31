@@ -11,28 +11,28 @@ import AddDestinations from './components/Adddestinations.jsx'
 
 const router = createBrowserRouter([
   {
-    path:"/",
-    element:<App style="duration-200"/>,
-    children:[
+    path: "/",
+    element: <App style="duration-200" />,
+    children: [
       {
-        path:"",
-        element:<Home/>,
+        path: "",
+        element: <Home />,
       },
       {
-        path:"Budget",
-        element:<Budget/>
+        path: "Budget",
+        element: <Budget />
       },
       {
-        path:"PlanYourTrip",
-        element:<PlanYourTrip/> 
+        path: "PlanYourTrip",
+        element: <PlanYourTrip />
       },
       {
-        path:"CheckWeather",
-        element:<Weather/> 
+        path: "Weather",
+        element: <Weather />
       },
       {
-        path:"AddDestinations",
-        element:<AddDestinations/> 
+        path: "AddDestinations",
+        element: <AddDestinations />
       }
     ]
   }
@@ -40,6 +40,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </StrictMode>,
 )
