@@ -21,8 +21,8 @@ const Budget = () => {
   };
 
   return (
-    <div className='p-20 bg-gradient-to-t from-slate-900 to-blue-950 h-screen w-screen'>
-      <h2 className="text-2xl font-bold mb-4 text-white">Track Your Budget</h2>
+    <div className='p-20 bg-gradient-to-t'>
+      <h2 className="text-2xl font-bold mb-4">Track Your Budget</h2>
       {expenses.map((expense, index) => (
         <div key={index} className="mb-4">
           <input
@@ -45,7 +45,7 @@ const Budget = () => {
         Add Expense
       </button>
       <div className="mt-4">
-        <h3 className="text-xl font-bold text-white">Total: ${total}</h3>
+        <h3 className="text-xl font-bold">Total: Rs.{total}</h3>
       </div>
     </div>
   );

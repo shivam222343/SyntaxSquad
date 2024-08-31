@@ -1,61 +1,17 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 
-const Weather = () => {
-  const [itinerary, setItinerary] = useState([]);
-  const [weather, setWeather] = useState(null);
-
-  const addDestination = () => {
-    setItinerary([...itinerary, { destination: '', activities: [] }]);
-  };
-
-  const handleDestinationChange = (index, event) => {
-    const newItinerary = [...itinerary];
-    newItinerary[index].destination = event.target.value;
-    setItinerary(newItinerary);
-    fetchWeather(event.target.value);
-  };
-
-  const fetchWeather = (city) => {
-    const apiKey = 'YOUR_WEATHERAPI_KEY'; // Replace with your actual WeatherAPI key
-    axios.get(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`)
-      .then(response => setWeather(response.data))
-      .catch(error => {
-        console.error("Error details:", error.response ? error.response.data : error.message);
-      });
-  };
-  
-
+function Home() {
   return (
-    <div className='p-20 bg-gradient-to-t from-slate-900 to-blue-950 h-screen w-screen'>
-      <h2 className="text-2xl font-bold mb-4 text-white">Plan Your Itinerary</h2>
-      {itinerary.map((item, index) => (
-        <div key={index} className="mb-4">
-          <input
-            type="text"
-            value={item.destination}
-            onChange={(e) => handleDestinationChange(index, e)}
-            placeholder="Enter Destination"
-            className="border p-2 rounded w-full"
-          />
-        </div>
-      ))}
-      {weather && (
-        <div className="mt-4">
-          <h3 className="text-xl font-bold">Weather in {weather.location.name}</h3>
-          <p>{weather.current.condition.text}</p>
-          <p>Temperature: {weather.current.temp_c}°C</p>
-          <p>Feels Like: {weather.current.feelslike_c}°C</p>
-          <p>Humidity: {weather.current.humidity}%</p>
-          <p>Wind: {weather.current.wind_kph} kph</p>
-        </div>
-      )}
-      <button onClick={addDestination} className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700">
-        Add Destination
-      </button>
+    <div className='flext items-center mx-56 gap-9 '>
+      <h1 className='font-bold font-sans text-[50px] mt-20 text-center'> <span className='text-red-500'>Plan Your New Trip With Us :</span> Personalized Iteneraries at Your Fingertips</h1>
+      <p className='mt-6 text-lg text-zinc-700 text-center'>Your personal trip planner and travel curator, creating custom itineraries tailored to your interests and budgets.</p>
+      <div className="bx h-14 flex justify-center items-center "> 
+      <NavLink to={"/PlanYourTrip"} className={({ isActive }) => `${isActive ? "" : ""} p1 cursor-pointer font-mono hover:bg-zinc-200 hover:rounded-xl hover:duration-300 hover:p-1 hover:px-3 `}>      <button className='bg-black text-white rounded-md px-3 py-1'>Get Started, Its Free</button></NavLink>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default Weather;
+export default Home
 

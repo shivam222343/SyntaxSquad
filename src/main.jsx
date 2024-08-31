@@ -4,10 +4,10 @@ import Home from './components/Home.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import './index.css'
-import Hotels from './components/Hotels.jsx'
 import PlanYourTrip from './components/PlanYourTrip.jsx'
 import Budget from './components/Budget.jsx'
 import Weather from './components/Weather.jsx'
+import AddDestinations from './components/Adddestinations.jsx'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +30,10 @@ const router = createBrowserRouter([
         path:"CheckWeather",
         element:<Weather/> 
       },
+      {
+        path:"AddDestinations",
+        element:<AddDestinations/> 
+      }
     ]
   }
 ])
