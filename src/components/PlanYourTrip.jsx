@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import { LoadScript } from '@react-google-maps/api';
 
 const PlanYourTrip = () => {
   const [itinerary, setItinerary] = useState({ destination: '', days: '', interests: [] });
@@ -24,7 +25,7 @@ const PlanYourTrip = () => {
     setShowSummary(true);
   };
 
-  const p1 = [
+  const interests = [
     {
       id: 1,
       title: "Just Me",
@@ -118,18 +119,22 @@ const PlanYourTrip = () => {
         Just provide some basic information, and our trip planner will generate a customized itinerary based on your preferences.
       </p>
 
+      {/* Destination Section */}
       <div className='mt-10'>
         <div>
           <h2 className='text-xl my-3 font-medium'>What is your destination of choice?</h2>
         </div>
-        <GooglePlacesAutocomplete
-          apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}
-          selectProps={{
-            onChange: handleDestinationChange
-          }}
-        />
+        {/* Load the Google API Script before using GooglePlacesAutocomplete */}
+        <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}>
+          <GooglePlacesAutocomplete
+            selectProps={{
+              onChange: handleDestinationChange,
+            }}
+          />
+        </LoadScript>
       </div>
 
+      {/* Days Section */}
       <div className='mt-10 flex flex-col gap-[6px]'>
         <h2 className='text-xl my-3 font-medium'>How many days are you planning your trip?</h2>
         <input
@@ -141,10 +146,11 @@ const PlanYourTrip = () => {
         />
       </div>
 
+      {/* Interests Section */}
       <div className='mt-10 flex flex-col gap-[6px]'>
-        <h2 className='text-xl my-3 font-medium'>What is your interest ?</h2>
+        <h2 className='text-xl my-3 font-medium'>Tell Us Your Interest</h2>
         <div className='grid grid-cols-3 gap-5 pb-20'>
-          {p1.map((item, index) => (
+          {interests.map((item, index) => (
             <div
               key={index}
               onClick={() => handleInterestClick(item.title)}
@@ -158,6 +164,7 @@ const PlanYourTrip = () => {
         </div>
       </div>
 
+      {/* Save Trip Button */}
       <button
         onClick={handleSave}
         className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700 mb-4"
@@ -165,6 +172,7 @@ const PlanYourTrip = () => {
         Save Trip
       </button>
 
+      {/* Itinerary Summary Modal */}
       {showSummary && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded shadow-lg w-11/12 max-w-lg">
