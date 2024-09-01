@@ -41,7 +41,7 @@ Follow these steps to set up the project locally on your machine:
 
 1. **Clone the Repository**
 
-   git clone https://github.com/your-username/your-repository-name.git
+   git clone https://github.com/shivam222343/SyntaxSquad
    cd your-repository-name/client
   
 
@@ -54,23 +54,7 @@ Follow these steps to set up the project locally on your machine:
 
    npm star
 
-   The React application will start and be available at `http://localhost:3000`.
-
-#### **Backend Setup (Node.js/Django)**
-
-**For Node.js Backend:**
-
-1. **Navigate to the Backend Directory**
-   cd ../server
-
-2. **Install Backend Dependencies**
-   npm install
-
-3. **Start the Backend Server**
-   npm run dev
-   
-   The Node.js server will start at `http://localhost:5000`.
-
+   The React application will start and be available at `http://localhost:3000`
 
 
 ### **2. Configuration**
