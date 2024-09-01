@@ -60,28 +60,9 @@ Follow these steps to set up the project locally on your machine:
 
 - Create a `.env` file in both the `client` and `server` directories and add the necessary environment variables as required by the project.
 
-**Example `.env` file for Node.js:**
+### **3. Usage**
 
-```
-PORT=5000
-MONGO_URI=your_mongodb_uri
-JWT_SECRET=your_jwt_secret
-```
-
-**Example `.env` file for Django:**
-
-```
-SECRET_KEY=your_secret_key
-DEBUG=True
-ALLOWED_HOSTS=localhost 127.0.0.1
-DATABASE_URL=your_database_url
-```
-
----
-
-### **4. Usage**
-
-After successfully setting up both the frontend and backend, you can access the application by navigating to `http://localhost:3000` for the frontend and `http://127.0.0.1:8000` (Django) or `http://localhost:5000` (Node.js) for the backend.
+After successfully setting up both the frontend and backend, you can access the application by navigating to `http://localhost:3000` for the frontend and`http://localhost:5000` (Node.js) for the backend.
 
 - **Login**: Create a user account or use provided credentials to log in.
 - **Create Itinerary**: Use the dynamic planner to create and adjust your travel itinerary.
