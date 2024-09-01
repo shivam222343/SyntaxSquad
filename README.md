@@ -41,7 +41,7 @@ Follow these steps to set up the project locally on your machine:
 
    git clone https://github.com/shivam222343/SyntaxSquad.git
    
-   cd SyntaxSquad/client
+   cd SyntaxSquad
   
 
 3. **Install Frontend Dependencies**
