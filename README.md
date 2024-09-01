@@ -28,8 +28,6 @@ Before you begin, ensure you have met the following requirements:
 - **Node.js**: Download and install from [Node.js Official Website](https://nodejs.org).
 - **NPM or Yarn**: Package managers that come with Node.js.
 - **Git**: To clone the repository. Install from [Git Official Website](https://git-scm.com).
-- **Python** (if using Django backend): Download and install from [Python Official Website](https://python.org) (for Django backend).
-- **Django** (if using Django backend): Install Django using `pip install django`.
 
 ---
 
