@@ -39,8 +39,8 @@ Follow these steps to set up the project locally on your machine:
 
 1. **Clone the Repository**
 
-   git clone https://github.com/shivam222343/SyntaxSquad
-   cd your-repository-name/client
+   git clone https://github.com/shivam222343/SyntaxSquad.git
+   cd SyntaxSquad/client
   
 
 2. **Install Frontend Dependencies**
@@ -50,7 +50,7 @@ Follow these steps to set up the project locally on your machine:
 
 3. **Start the Development Server**
 
-   npm star
+   npm start
 
    The React application will start and be available at `http://localhost:3000`
 
