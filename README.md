@@ -40,15 +40,16 @@ Follow these steps to set up the project locally on your machine:
 1. **Clone the Repository**
 
    git clone https://github.com/shivam222343/SyntaxSquad.git
+   
    cd SyntaxSquad/client
   
 
-2. **Install Frontend Dependencies**
+3. **Install Frontend Dependencies**
 
    npm install
 
 
-3. **Start the Development Server**
+4. **Start the Development Server**
 
    npm start
 
