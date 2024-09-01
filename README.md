@@ -81,10 +81,6 @@ npm test
 **Backend Tests (Node.js):**
 npm run test
 
-
-**Backend Tests (Django):**
-python manage.py test
-
 ### **6. Troubleshooting**
 
 If you encounter issues:
